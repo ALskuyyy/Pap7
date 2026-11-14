@@ -32,84 +32,43 @@
 
   <main class="container py-4">
     <h1 class="h3 border-start border-danger border-4 ps-3 mb-3">Serial</h1>
-    <ul class="nav nav-tabs" role="tablist">
-      <li class="nav-item"><button class="nav-link active" data-bs-toggle="tab" data-bs-target="#tabDrama" type="button">Drama</button></li>
-      <li class="nav-item"><button class="nav-link" data-bs-toggle="tab" data-bs-target="#tabPetualang" type="button">Petualangan</button></li>
-      <li class="nav-item"><button class="nav-link" data-bs-toggle="tab" data-bs-target="#tabAnak" type="button">Anak</button></li>
-    </ul>
-    <div class="tab-content border border-top-0 rounded-bottom">
-      <div class="tab-pane fade show active" id="tabDrama">
-        <ul class="list-group list-group-flush">
-        <li class="list-group-item d-flex gap-3 align-items-center">
-          <img src="img/poster7.svg" class="rounded" width="70" alt="Poster serial Gema Melayu">
-          <div>
-            <h2 class="h6 mb-1">Gema Melayu <span class="badge text-bg-primary">Musim 2</span></h2>
-            <p class="small text-secondary mb-0">Drama keluarga berlatar tradisi Melayu pesisir. 12 episode.</p>
+    <p class="text-secondary mb-4">Serial dengan genre, jumlah episode, dan durasi episode sesuai informasi yang tersedia.</p>
+    <div class="row row-cols-1 row-cols-md-2 g-4">
+      <div class="col">
+        <article class="card h-100">
+          <div class="row g-0 h-100">
+            <div class="col-4">
+              <img src="img/poster1.jpg" class="img-fluid rounded-start h-100" style="object-fit: cover;" alt="Poster Doctor X: Mafia in White">
+            </div>
+            <div class="col-8">
+              <div class="card-body">
+                <h2 class="h5 card-title">Doctor X: Mafia in White</h2>
+                <p class="small text-secondary">Drama medis</p>
+                <p class="card-text">Drama rumah sakit tentang dokter bedah yang berhadapan dengan intrik dan kepentingan di dunia medis.</p>
+                <p class="small text-secondary mb-0">Durasi dan jumlah episode: belum diumumkan</p>
+              </div>
+            </div>
           </div>
-        </li>
-        <li class="list-group-item d-flex gap-3 align-items-center">
-          <img src="img/poster1.svg" class="rounded" width="70" alt="Poster serial Senja di Siak: Awal Cerita">
-          <div>
-            <h2 class="h6 mb-1">Senja di Siak: Awal Cerita <span class="badge text-bg-danger">Baru</span></h2>
-            <p class="small text-secondary mb-0">Prekuel yang menceritakan masa muda tokoh utama. 8 episode.</p>
-          </div>
-        </li>
-        </ul>
+        </article>
       </div>
-      <div class="tab-pane fade" id="tabPetualang">
-        <ul class="list-group list-group-flush">
-        <li class="list-group-item d-flex gap-3 align-items-center">
-          <img src="img/poster8.svg" class="rounded" width="70" alt="Poster serial Laut Tak Bertepi">
-          <div>
-            <h2 class="h6 mb-1">Laut Tak Bertepi <span class="badge text-bg-success">Tamat</span></h2>
-            <p class="small text-secondary mb-0">Petualangan awak kapal riset di perairan timur. 10 episode.</p>
+      <div class="col">
+        <article class="card h-100">
+          <div class="row g-0 h-100">
+            <div class="col-4">
+              <img src="img/poster13.jpeg" class="img-fluid rounded-start h-100" style="object-fit: cover;" alt="Poster My Lovely Liar">
+            </div>
+            <div class="col-8">
+              <div class="card-body">
+                <h2 class="h5 card-title">My Lovely Liar</h2>
+                <p class="small text-secondary">Drama, misteri, romansa | 2023</p>
+                <p class="card-text">Seorang perempuan yang mampu mengenali kebohongan bertemu dengan komposer yang menyimpan rahasia.</p>
+                <p class="small text-secondary mb-0">16 episode | sekitar 60-70 menit per episode</p>
+              </div>
+            </div>
           </div>
-        </li>
-        <li class="list-group-item d-flex gap-3 align-items-center">
-          <img src="img/poster2.svg" class="rounded" width="70" alt="Poster serial Rimba Sembilan: Jejak">
-          <div>
-            <h2 class="h6 mb-1">Rimba Sembilan: Jejak <span class="badge text-bg-warning">Populer</span></h2>
-            <p class="small text-secondary mb-0">Kelanjutan kisah sembilan sahabat di hutan hujan. 6 episode.</p>
-          </div>
-        </li>
-        </ul>
-      </div>
-      <div class="tab-pane fade" id="tabAnak">
-        <ul class="list-group list-group-flush">
-        <li class="list-group-item d-flex gap-3 align-items-center">
-          <img src="img/poster4.svg" class="rounded" width="70" alt="Poster serial Kancil dan Kawan-Kawan">
-          <div>
-            <h2 class="h6 mb-1">Kancil dan Kawan-Kawan <span class="badge text-bg-success">Keluarga</span></h2>
-            <p class="small text-secondary mb-0">Animasi edukatif untuk anak dengan pendampingan orang tua. 20 episode.</p>
-          </div>
-        </li>
-        </ul>
+        </article>
       </div>
     </div>
-
-    <h2 class="h3 border-start border-danger border-4 ps-3 mb-3 mt-5">Jadwal Tayang</h2>
-    <div class="table-responsive">
-      <table class="table table-striped table-hover align-middle">
-        <thead class="table-dark">
-          <tr><th>Hari</th><th>Judul</th><th>Jam</th><th>Status</th></tr>
-        </thead>
-        <tbody>
-          <tr><td>Senin</td><td>Gema Melayu</td><td>19.00</td><td><span class="badge text-bg-primary">Tayang</span></td></tr>
-          <tr><td>Rabu</td><td>Laut Tak Bertepi</td><td>20.00</td><td><span class="badge text-bg-success">Ulang</span></td></tr>
-          <tr><td>Jumat</td><td>Senja di Siak: Awal Cerita</td><td>19.30</td><td><span class="badge text-bg-danger">Baru</span></td></tr>
-          <tr><td>Minggu</td><td>Kancil dan Kawan-Kawan</td><td>09.00</td><td><span class="badge text-bg-warning">Keluarga</span></td></tr>
-        </tbody>
-      </table>
-    </div>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
     
   </main>
 
