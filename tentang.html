@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="id" data-bs-theme="dark">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Tentang - LayarKu</title>
+  <link
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+    rel="stylesheet"
+    integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
+    crossorigin="anonymous">
+</head>
+<body>
+  <nav class="navbar navbar-expand-lg bg-dark sticky-top shadow">
+    <div class="container">
+      <a class="navbar-brand fs-4 text-danger fw-bold" href="index.html">LayarKu</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+        data-bs-target="#menuUtama" aria-label="Buka menu">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="menuUtama">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link" href="index.html">Beranda</a></li>
+          <li class="nav-item"><a class="nav-link" href="film.html">Film</a></li>
+          <li class="nav-item"><a class="nav-link" href="serial.html">Serial</a></li>
+          <li class="nav-item"><a class="nav-link active" href="tentang.html">Tentang</a></li>
+          <li class="nav-item"><a class="nav-link" href="kontak.html">Kontak</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <main class="container py-4">
+    <h1 class="h3 border-start border-danger border-4 ps-3 mb-3">Tentang LayarKu</h1>
+    <section class="clearfix mb-4">
+      <img src="img/tentang.svg" class="img-thumbnail float-start me-3 mb-2" alt="Ilustrasi pemutar video" width="260">
+      <p>LayarKu adalah portal hiburan dan video fiktif untuk keperluan praktikum. Tampilannya meniru pola
+        situs katalog streaming pada umumnya: banner yang bergantian, deretan poster, dan pembagian kategori.</p>
+      <p>Semua judul, gambar, dan data hanyalah contoh. Tidak ada video sungguhan, dan tidak ada konten dari
+        layanan lain yang digunakan.</p>
+    </section>
+
+    <div class="row row-cols-2 row-cols-md-4 g-3 mb-5">
+      <div class="col"><div class="card text-bg-danger"><div class="card-body text-center">
+        <div class="fs-3 fw-bold">120+</div><div class="small">Judul film</div></div></div></div>
+      <div class="col"><div class="card text-bg-primary"><div class="card-body text-center">
+        <div class="fs-3 fw-bold">35</div><div class="small">Serial</div></div></div></div>
+      <div class="col"><div class="card text-bg-success"><div class="card-body text-center">
+        <div class="fs-3 fw-bold">8</div><div class="small">Genre</div></div></div></div>
+      <div class="col"><div class="card text-bg-warning"><div class="card-body text-center">
+        <div class="fs-3 fw-bold">24 jam</div><div class="small">Akses</div></div></div></div>
+    </div>
+
+    <h2 class="h3 border-start border-danger border-4 ps-3 mb-3">Di Balik Layar</h2>
+    <div class="row mb-5">
+      <div class="col-md-6 mb-3">
+        <figure class="figure">
+          <img src="img/kegiatan1.svg" class="figure-img img-fluid rounded" alt="Kru film sedang syuting">
+          <figcaption class="figure-caption">Proses syuting di lokasi tepi sungai.</figcaption>
+        </figure>
+      </div>
+      <div class="col-md-6 mb-3">
+        <figure class="figure">
+          <img src="img/kegiatan2.svg" class="figure-img img-fluid rounded" alt="Pengisi suara di studio">
+          <figcaption class="figure-caption">Sesi pengisian suara film animasi.</figcaption>
+        </figure>
+      </div>
+    </div>
+
+    <h2 class="h3 border-start border-danger border-4 ps-3 mb-3">Pertanyaan Umum</h2>
+    <div class="accordion" id="faq">
+      <div class="accordion-item">
+        <h2 class="accordion-header">
+          <button class="accordion-button" data-bs-toggle="collapse" data-bs-target="#faq1">Apakah video di sini bisa diputar?</button>
+        </h2>
+        <div id="faq1" class="accordion-collapse collapse show" data-bs-parent="#faq">
+          <div class="accordion-body">Tidak. Ini situs contoh untuk praktikum antarmuka, sehingga hanya menampilkan tata letak dan komponen.</div>
+        </div>
+      </div>
+      <div class="accordion-item">
+        <h2 class="accordion-header">
+          <button class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#faq2">Apakah perlu membuat akun?</button>
+        </h2>
+        <div id="faq2" class="accordion-collapse collapse" data-bs-parent="#faq">
+          <div class="accordion-body">Tidak. Formulir pada halaman Kontak hanya contoh tampilan dan tidak menyimpan data.</div>
+        </div>
+      </div>
+      <div class="accordion-item">
+        <h2 class="accordion-header">
+          <button class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#faq3">Bagaimana tampilannya di ponsel?</button>
+        </h2>
+        <div id="faq3" class="accordion-collapse collapse" data-bs-parent="#faq">
+          <div class="accordion-body">Halaman dibuat responsif dengan grid Bootstrap. Menu dilipat menjadi tombol hamburger di layar kecil.</div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer class="py-4 text-center bg-black border-top border-secondary-subtle">
+    <small class="text-secondary">&copy; 2026 LayarKu. Situs contoh praktikum Pemrograman Antar Pengguna,
+      S1 Sistem Informasi, Universitas Riau.</small>
+  </footer>
+
+  <script
+    src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+    crossorigin="anonymous"></script>
+</body>
+</html>

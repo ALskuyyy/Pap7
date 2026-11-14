@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="id" data-bs-theme="dark">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Serial - LayarKu</title>
+  <link
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+    rel="stylesheet"
+    integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
+    crossorigin="anonymous">
+</head>
+<body>
+  <nav class="navbar navbar-expand-lg bg-dark sticky-top shadow">
+    <div class="container">
+      <a class="navbar-brand fs-4 text-danger fw-bold" href="index.html">LayarKu</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+        data-bs-target="#menuUtama" aria-label="Buka menu">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="menuUtama">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link" href="index.html">Beranda</a></li>
+          <li class="nav-item"><a class="nav-link" href="film.html">Film</a></li>
+          <li class="nav-item"><a class="nav-link active" href="serial.html">Serial</a></li>
+          <li class="nav-item"><a class="nav-link" href="tentang.html">Tentang</a></li>
+          <li class="nav-item"><a class="nav-link" href="kontak.html">Kontak</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <main class="container py-4">
+    <h1 class="h3 border-start border-danger border-4 ps-3 mb-3">Serial</h1>
+    <ul class="nav nav-tabs" role="tablist">
+      <li class="nav-item"><button class="nav-link active" data-bs-toggle="tab" data-bs-target="#tabDrama" type="button">Drama</button></li>
+      <li class="nav-item"><button class="nav-link" data-bs-toggle="tab" data-bs-target="#tabPetualang" type="button">Petualangan</button></li>
+      <li class="nav-item"><button class="nav-link" data-bs-toggle="tab" data-bs-target="#tabAnak" type="button">Anak</button></li>
+    </ul>
+    <div class="tab-content border border-top-0 rounded-bottom">
+      <div class="tab-pane fade show active" id="tabDrama">
+        <ul class="list-group list-group-flush">
+        <li class="list-group-item d-flex gap-3 align-items-center">
+          <img src="img/poster7.svg" class="rounded" width="70" alt="Poster serial Gema Melayu">
+          <div>
+            <h2 class="h6 mb-1">Gema Melayu <span class="badge text-bg-primary">Musim 2</span></h2>
+            <p class="small text-secondary mb-0">Drama keluarga berlatar tradisi Melayu pesisir. 12 episode.</p>
+          </div>
+        </li>
+        <li class="list-group-item d-flex gap-3 align-items-center">
+          <img src="img/poster1.svg" class="rounded" width="70" alt="Poster serial Senja di Siak: Awal Cerita">
+          <div>
+            <h2 class="h6 mb-1">Senja di Siak: Awal Cerita <span class="badge text-bg-danger">Baru</span></h2>
+            <p class="small text-secondary mb-0">Prekuel yang menceritakan masa muda tokoh utama. 8 episode.</p>
+          </div>
+        </li>
+        </ul>
+      </div>
+      <div class="tab-pane fade" id="tabPetualang">
+        <ul class="list-group list-group-flush">
+        <li class="list-group-item d-flex gap-3 align-items-center">
+          <img src="img/poster8.svg" class="rounded" width="70" alt="Poster serial Laut Tak Bertepi">
+          <div>
+            <h2 class="h6 mb-1">Laut Tak Bertepi <span class="badge text-bg-success">Tamat</span></h2>
+            <p class="small text-secondary mb-0">Petualangan awak kapal riset di perairan timur. 10 episode.</p>
+          </div>
+        </li>
+        <li class="list-group-item d-flex gap-3 align-items-center">
+          <img src="img/poster2.svg" class="rounded" width="70" alt="Poster serial Rimba Sembilan: Jejak">
+          <div>
+            <h2 class="h6 mb-1">Rimba Sembilan: Jejak <span class="badge text-bg-warning">Populer</span></h2>
+            <p class="small text-secondary mb-0">Kelanjutan kisah sembilan sahabat di hutan hujan. 6 episode.</p>
+          </div>
+        </li>
+        </ul>
+      </div>
+      <div class="tab-pane fade" id="tabAnak">
+        <ul class="list-group list-group-flush">
+        <li class="list-group-item d-flex gap-3 align-items-center">
+          <img src="img/poster4.svg" class="rounded" width="70" alt="Poster serial Kancil dan Kawan-Kawan">
+          <div>
+            <h2 class="h6 mb-1">Kancil dan Kawan-Kawan <span class="badge text-bg-success">Keluarga</span></h2>
+            <p class="small text-secondary mb-0">Animasi edukatif untuk anak dengan pendampingan orang tua. 20 episode.</p>
+          </div>
+        </li>
+        </ul>
+      </div>
+    </div>
+
+    <h2 class="h3 border-start border-danger border-4 ps-3 mb-3 mt-5">Jadwal Tayang</h2>
+    <div class="table-responsive">
+      <table class="table table-striped table-hover align-middle">
+        <thead class="table-dark">
+          <tr><th>Hari</th><th>Judul</th><th>Jam</th><th>Status</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Senin</td><td>Gema Melayu</td><td>19.00</td><td><span class="badge text-bg-primary">Tayang</span></td></tr>
+          <tr><td>Rabu</td><td>Laut Tak Bertepi</td><td>20.00</td><td><span class="badge text-bg-success">Ulang</span></td></tr>
+          <tr><td>Jumat</td><td>Senja di Siak: Awal Cerita</td><td>19.30</td><td><span class="badge text-bg-danger">Baru</span></td></tr>
+          <tr><td>Minggu</td><td>Kancil dan Kawan-Kawan</td><td>09.00</td><td><span class="badge text-bg-warning">Keluarga</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    
+  </main>
+
+  <footer class="py-4 text-center bg-black border-top border-secondary-subtle">
+    <small class="text-secondary">&copy; 2026 LayarKu. Situs contoh praktikum Pemrograman Antar Pengguna,
+      S1 Sistem Informasi, Universitas Riau.</small>
+  </footer>
+
+  <script
+    src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+    crossorigin="anonymous"></script>
+</body>
+</html>
