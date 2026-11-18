@@ -9,6 +9,8 @@
     rel="stylesheet"
     integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
     crossorigin="anonymous">
+  <link rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 </head>
 <body>
   <nav class="navbar navbar-expand-lg bg-dark sticky-top shadow">
@@ -33,100 +35,143 @@
   <main>
     <section class="bg-black py-5">
       <div class="container">
+        <nav aria-label="breadcrumb">
+          <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="index.html">Beranda</a></li>
+            <li class="breadcrumb-item"><a href="film.html">Film</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Miracle in Cell No. 7</li>
+          </ol>
+        </nav>
         <div class="row align-items-center g-4">
           <div class="col-md-4 col-lg-3">
-            <img src="img/poster2.jpeg" class="img-fluid rounded shadow"
-              alt="Poster Miracle in Cell No. 7">
+            <img src="img/poster2.jpeg" class="img-fluid rounded shadow" alt="Poster film Miracle in Cell No. 7">
           </div>
           <div class="col-md-8 col-lg-9">
-          <p class="text-danger fw-bold text-uppercase mb-2">Film pilihan LayarKu</p>
-          <h1 class="display-3 fw-bold mb-4">Miracle in Cell No. 7</h1>
-          <div class="d-flex flex-wrap gap-2 align-items-center mb-3">
-            <span class="badge text-bg-danger">Pilihan populer</span>
-            <span class="text-light">2022</span>
-            <span class="text-secondary">|</span>
-            <span class="text-light">2 jam 25 menit</span>
-            <span class="text-secondary">|</span>
-            <span class="text-light">Drama, Komedi</span>
-          </div>
-          <p class="lead mb-4">
-            Kasih sayang seorang ayah dan putrinya menghadapi ujian ketika sebuah
-            kesalahpahaman mengubah hidup mereka.
-          </p>
-          <a href="#sinopsis" class="btn btn-danger btn-lg fw-semibold me-2 mb-2">
-            Mulai
-          </a>
-          <a href="#sinopsis" class="btn btn-light btn-lg fw-semibold me-2 mb-2">
-            Lihat sinopsis
-          </a>
-          <a href="film.html" class="btn btn-secondary btn-lg fw-semibold mb-2">
-            Kembali ke film
-          </a>
+            <p class="text-danger fw-bold text-uppercase mb-2">Film pilihan LayarKu</p>
+            <h1 class="display-4 fw-bold mb-3">Miracle in Cell No. 7</h1>
+            <div class="d-flex flex-wrap gap-2 align-items-center mb-3">
+              <span class="badge text-bg-danger">Drama</span>
+              <span class="badge text-bg-danger">Komedi</span>
+              <span class="badge text-bg-secondary">13+</span>
+              <span class="text-light">2022</span>
+              <span class="text-light">2 jam 25 menit</span>
+            </div>
+            <p class="lead mb-4">Seorang ayah dengan keterbatasan intelektual berjuang bertemu kembali dengan putrinya setelah dituduh melakukan kejahatan yang tidak ia lakukan.</p>
+            <button type="button" class="btn btn-danger btn-lg fw-semibold me-2 mb-2"
+              data-bs-toggle="modal" data-bs-target="#modalTrailer">
+              <i class="bi bi-play-circle me-1"></i>Tonton trailer
+            </button>
+            <button type="button" class="btn btn-outline-light btn-lg fw-semibold me-2 mb-2" id="btnDaftar"
+              data-bs-toggle="tooltip" data-bs-title="Simpan ke daftar tontonan">
+              <i class="bi bi-plus-circle me-1"></i>Tambah ke daftar
+            </button>
+            <a href="film.html" class="btn btn-secondary btn-lg fw-semibold mb-2">
+              <i class="bi bi-arrow-left me-1"></i>Kembali ke film
+            </a>
           </div>
         </div>
       </div>
     </section>
 
     <div class="container py-5">
-      <section id="sinopsis" class="row g-4 mb-5">
-        <div class="col-lg-8">
-          <h2 class="h4 border-start border-danger border-4 ps-3 mb-3">Tentang film ini</h2>
-          <p class="text-secondary">
-            Dodo Rozak adalah seorang ayah yang memiliki keterbatasan intelektual
-            dan sangat menyayangi putrinya, Kartika. Setelah dituduh melakukan
-            kejahatan yang tidak ia lakukan, Dodo harus menjalani kehidupan di
-            penjara. Teman-teman satu selnya berusaha membantu Dodo bertemu kembali
-            dengan Kartika.
-          </p>
-        </div>
-        <div class="col-lg-4">
-          <h2 class="h4 border-start border-danger border-4 ps-3 mb-3">Detail</h2>
-          <p class="mb-2"><span class="text-secondary">Genre:</span> Drama, komedi</p>
-          <p class="mb-2"><span class="text-secondary">Tahun rilis:</span> 2022</p>
-          <p class="mb-0"><span class="text-secondary">Durasi:</span> 2 jam 25 menit</p>
+      <section class="mb-5">
+        <h2 class="h4 border-start border-danger border-4 ps-3 mb-3">Tentang film ini</h2>
+        <ul class="nav nav-tabs" role="tablist">
+          <li class="nav-item">
+            <button class="nav-link active" data-bs-toggle="tab" data-bs-target="#tabSinopsis" type="button">Sinopsis</button>
+          </li>
+          <li class="nav-item">
+            <button class="nav-link" data-bs-toggle="tab" data-bs-target="#tabDetail" type="button">Detail</button>
+          </li>
+        </ul>
+        <div class="tab-content p-3 border border-top-0">
+          <div class="tab-pane fade show active" id="tabSinopsis">
+            <p class="text-secondary mb-0">Dodo Rozak adalah seorang ayah yang memiliki keterbatasan intelektual dan sangat menyayangi putrinya, Kartika. Setelah dituduh melakukan kejahatan yang tidak ia lakukan, Dodo harus menjalani kehidupan di penjara. Teman-teman satu selnya berusaha membantu Dodo bertemu kembali dengan Kartika.</p>
+          </div>
+          <div class="tab-pane fade" id="tabDetail">
+            <p class="mb-2"><span class="text-secondary">Genre:</span> Drama, Komedi</p>
+            <p class="mb-2"><span class="text-secondary">Tahun rilis:</span> 2022</p>
+            <p class="mb-2"><span class="text-secondary">Durasi:</span> 2 jam 25 menit</p>
+            <p class="mb-2"><span class="text-secondary">Sutradara:</span> Hanung Bramantyo</p>
+            <p class="mb-0"><span class="text-secondary">Pemeran:</span> Vino G. Bastian, Graciella Abigail, Mawar Eva de Jongh, Indro Warkop, Tora Sudiro</p>
+          </div>
         </div>
       </section>
 
-      <br>
-      <br>
-      <br>
-        
+      <section class="mb-5">
+        <h2 class="h4 border-start border-danger border-4 ps-3 mb-4">Ulasan penonton</h2>
+        <div class="row row-cols-1 row-cols-md-3 g-3">
+          <div class="col">
+            <div class="card h-100">
+              <div class="card-body">
+                <p class="mb-2">&ldquo;Awalnya tertawa, akhirnya menangis. Hubungan ayah dan anaknya sangat menyentuh.&rdquo;</p>
+                <small class="text-secondary">&mdash; Rani A.</small>
+              </div>
+            </div>
+          </div>
+          <div class="col">
+            <div class="card h-100">
+              <div class="card-body">
+                <p class="mb-2">&ldquo;Akting Vino luar biasa. Cocok ditonton bersama keluarga.&rdquo;</p>
+                <small class="text-secondary">&mdash; Dimas P.</small>
+              </div>
+            </div>
+          </div>
+          <div class="col">
+            <div class="card h-100">
+              <div class="card-body">
+                <p class="mb-2">&ldquo;Siapkan tisu. Ceritanya sederhana tetapi sangat membekas.&rdquo;</p>
+                <small class="text-secondary">&mdash; Sari M.</small>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       <section>
         <h2 class="h4 border-start border-danger border-4 ps-3 mb-4">Film lainnya</h2>
-        <div class="row row-cols-2 row-cols-md-3 row-cols-lg-4 g-3">
+        <div class="row row-cols-2 row-cols-md-4 g-3">
           <div class="col">
             <article class="card h-100 overflow-hidden">
-              <img src="img/poster3.jpeg" class="card-img-top" alt="Poster Laskar Pelangi">
+              <a href="film.html" aria-label="Lihat film Laskar Pelangi">
+                <img src="img/poster3.jpeg" class="card-img-top" alt="Poster Laskar Pelangi">
+              </a>
               <div class="card-body">
                 <h3 class="h6 card-title">Laskar Pelangi</h3>
-                <p class="small text-secondary mb-0">Drama, keluarga | 2008</p>
+                <p class="small text-secondary mb-0">Drama, Keluarga | 2008</p>
               </div>
             </article>
           </div>
           <div class="col">
             <article class="card h-100 overflow-hidden">
-              <img src="img/poster4.jpeg" class="card-img-top" alt="Poster Avengers: Endgame">
+              <a href="film.html" aria-label="Lihat film Avengers: Endgame">
+                <img src="img/poster4.jpeg" class="card-img-top" alt="Poster Avengers: Endgame">
+              </a>
               <div class="card-body">
                 <h3 class="h6 card-title">Avengers: Endgame</h3>
-                <p class="small text-secondary mb-0">Aksi, petualangan | 2019</p>
+                <p class="small text-secondary mb-0">Aksi, Petualangan | 2019</p>
               </div>
             </article>
           </div>
           <div class="col">
             <article class="card h-100 overflow-hidden">
-              <img src="img/poster6.jpeg" class="card-img-top" alt="Poster Agak Laen">
-              <div class="card-body">
-                <h3 class="h6 card-title">Agak Laen</h3>
-                <p class="small text-secondary mb-0">Komedi, horor | 2024</p>
-              </div>
-            </article>
-          </div>
-          <div class="col">
-            <article class="card h-100 overflow-hidden">
-              <img src="img/poster5.jpeg" class="card-img-top" alt="Poster Keluarga Cemara">
+              <a href="film.html" aria-label="Lihat film Keluarga Cemara">
+                <img src="img/poster5.jpeg" class="card-img-top" alt="Poster Keluarga Cemara">
+              </a>
               <div class="card-body">
                 <h3 class="h6 card-title">Keluarga Cemara</h3>
-                <p class="small text-secondary mb-0">Drama, keluarga | 2019</p>
+                <p class="small text-secondary mb-0">Drama, Keluarga | 2019</p>
+              </div>
+            </article>
+          </div>
+          <div class="col">
+            <article class="card h-100 overflow-hidden">
+              <a href="film.html" aria-label="Lihat film Agak Laen">
+                <img src="img/poster6.jpeg" class="card-img-top" alt="Poster Agak Laen">
+              </a>
+              <div class="card-body">
+                <h3 class="h6 card-title">Agak Laen</h3>
+                <p class="small text-secondary mb-0">Komedi, Horor | 2024</p>
               </div>
             </article>
           </div>
@@ -135,13 +180,89 @@
     </div>
   </main>
 
+  <div class="modal fade" id="modalTrailer" tabindex="-1" aria-labelledby="judulTrailer" aria-hidden="true">
+    <div class="modal-dialog modal-xl modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="judulTrailer">Trailer Miracle in Cell No. 7</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Tutup"></button>
+        </div>
+        <div class="modal-body">
+          <div class="ratio ratio-16x9">
+            <video id="videoTrailer" controls preload="none" poster="img/poster2.jpeg">
+              <source src="video/trailer-miracle.mp4" type="video/mp4">
+              Browser Anda tidak mendukung pemutar video.
+            </video>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="toast-container position-fixed bottom-0 end-0 p-3">
+    <div id="toastDaftar" class="toast" role="alert">
+      <div class="toast-header">
+        <strong class="me-auto">Notifikasi</strong>
+        <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Tutup"></button>
+      </div>
+      <div class="toast-body" id="toastPesan"></div>
+    </div>
+  </div>
+
   <footer class="py-4 text-center bg-black border-top border-secondary-subtle">
     <small class="text-secondary">&copy; 2026 LayarKu Kelompok 7</small>
   </footer>
 
   <script
     src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-YvpcrY0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+    integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
     crossorigin="anonymous"></script>
+  <script>
+    // tooltip (Praktikum 5, kode 6)
+    document.querySelectorAll('[data-bs-toggle="tooltip"]').forEach(el => new bootstrap.Tooltip(el));
+
+    // hentikan video saat modal trailer ditutup
+    const modalTrailer = document.getElementById('modalTrailer');
+    const videoTrailer = document.getElementById('videoTrailer');
+    modalTrailer.addEventListener('hidden.bs.modal', () => {
+      videoTrailer.pause();
+      videoTrailer.currentTime = 0;
+    });
+
+    // tombol tambah ke daftar, disimpan di localStorage (tanpa backend)
+    const KUNCI = 'daftarFilm';
+    const FILM_ID = 1;
+    const btnDaftar = document.getElementById('btnDaftar');
+
+    function bacaDaftar() {
+      return JSON.parse(localStorage.getItem(KUNCI)) || [];
+    }
+
+    function perbaruiTombol() {
+      const ada = bacaDaftar().includes(FILM_ID);
+      btnDaftar.className = 'btn btn-lg fw-semibold me-2 mb-2 ' + (ada ? 'btn-success' : 'btn-outline-light');
+      btnDaftar.innerHTML = ada
+        ? '<i class="bi bi-check-circle-fill me-1"></i>Ada di daftar'
+        : '<i class="bi bi-plus-circle me-1"></i>Tambah ke daftar';
+    }
+
+    btnDaftar.addEventListener('click', () => {
+      let daftar = bacaDaftar();
+      let pesan;
+      if (daftar.includes(FILM_ID)) {
+        daftar = daftar.filter(x => x !== FILM_ID);
+        pesan = 'Miracle in Cell No. 7 dihapus dari daftar.';
+      } else {
+        daftar.push(FILM_ID);
+        pesan = 'Miracle in Cell No. 7 ditambahkan ke daftar.';
+      }
+      localStorage.setItem(KUNCI, JSON.stringify(daftar));
+      perbaruiTombol();
+      document.getElementById('toastPesan').textContent = pesan;
+      bootstrap.Toast.getOrCreateInstance(document.getElementById('toastDaftar')).show();
+    });
+
+    perbaruiTombol();
+  </script>
 </body>
 </html>
