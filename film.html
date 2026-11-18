@@ -32,7 +32,7 @@
 
   <main class="container py-4">
     <h1 class="h3 border-start border-danger border-4 ps-3 mb-3">Katalog Film</h1>
-    <p class="text-secondary mb-4">Genre dan durasi film dicantumkan sesuai informasi yang tersedia. Durasi yang belum diketahui ditandai secara terbuka.</p>
+    <p class="text-secondary mb-4"></p>
     <div class="row row-cols-2 row-cols-md-3 row-cols-lg-4 g-4" id="filmList">
       <div class="col">
         <div class="card h-100 overflow-hidden">
@@ -225,7 +225,7 @@
         label: "Halaman berikutnya"
       });
 
-      pageStatus.textContent = `Menampilkan film ${firstFilm + 1}-${lastFilm} dari ${filmCards.length}`;
+      
     }
 
     pagination.addEventListener("click", (event) => {
