@@ -31,85 +31,107 @@
     </div>
   </nav>
 
-  <main class="container py-4">
-    <div id="carouselBanner" class="carousel slide mb-5" data-bs-ride="carousel">
-      <div class="carousel-indicators">
-      <button type="button" data-bs-target="#carouselBanner" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Banner 1"></button>
-      <button type="button" data-bs-target="#carouselBanner" data-bs-slide-to="1" aria-label="Banner 2"></button>
-      <button type="button" data-bs-target="#carouselBanner" data-bs-slide-to="2" aria-label="Banner 3"></button>
-      </div>
-      <div class="carousel-inner rounded-3">
-      <div class="carousel-item active">
-        <img src="img/banner11.jpeg" class="d-block w-100" alt="Ilustrasi layar bioskop">
-        <div class="carousel-caption d-none d-md-block">
-          <span class="badge text-bg-danger mb-2">Premier</span>
-          <h2 class="fw-bold text-white">Malam Premier Film Pilihan</h2>
-          <p class="fw-bold text-white" >Tonton film terbaru tanpa antre.</p>
-          <a href="film.html" class="btn btn-danger">Lihat Film</a>
-        </div>
-      </div>
-      <div class="carousel-item">
-        <img src="img/banner22.jpeg" class="d-block w-100" alt="Ilustrasi layar serial">
-        <div class="carousel-caption d-none d-md-block">
-          <span class="badge text-bg-primary mb-2">Serial</span>
-          <h2 class="fw-bold text-white">Serial Baru Setiap Pekan</h2>
-          <p class="text-white">Episode terbaru hadir rutin.</p>
-          <a href="serial.html" class="btn btn-danger">Lihat Serial</a>
-        </div>
-      </div>
-      <div class="carousel-item">
-        <img src="img/banner33.jpeg" class="d-block w-100" alt="Ilustrasi panggung konser">
-        <div class="carousel-caption d-none d-md-block">
-          <span class="badge text-bg-warning mb-2">Keluarga</span>
-          <h2 class="fw-bold text-white">Konser dan Hiburan Keluarga</h2>
-          <p class="text-white">Tontonan seru untuk semua usia.</p>
-          <a href="tentang.html" class="btn btn-danger">Kenali Kami</a>
-        </div>
-      </div>
-      </div>
-      <button class="carousel-control-prev" type="button" data-bs-target="#carouselBanner" data-bs-slide="prev">
-        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Sebelumnya</span>
-      </button>
-      <button class="carousel-control-next" type="button" data-bs-target="#carouselBanner" data-bs-slide="next">
-        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Berikutnya</span>
-      </button>
+  <header id="heroBanner" class="carousel slide bg-black" data-bs-ride="carousel">
+    <div class="carousel-indicators">
+      <button type="button" data-bs-target="#heroBanner" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+      <button type="button" data-bs-target="#heroBanner" data-bs-slide-to="1" aria-label="Slide 2"></button>
+      <button type="button" data-bs-target="#heroBanner" data-bs-slide-to="2" aria-label="Slide 3"></button>
     </div>
-
-    <section class="mb-5">
-      <div class="d-flex justify-content-between align-items-center mb-3">
-        <h1 class="h3 border-start border-danger border-4 ps-3 mb-3 mb-0">Film Pilihan</h1>
-        <a href="film.html" class="btn btn-sm btn-outline-danger">Semua film</a>
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <div class="container py-5">
+          <div class="row align-items-center g-4">
+            <div class="col-md-4 col-lg-3 text-center">
+              <img src="img/poster2.jpeg" class="img-fluid rounded shadow" style="max-height: 360px; object-fit: cover;" alt="Poster Miracle in Cell No. 7">
+            </div>
+            <div class="col-md-8 col-lg-9">
+              <span class="badge text-bg-danger mb-2">Film Unggulan</span>
+              <h1 class="display-5 fw-bold mb-2">Miracle in Cell No. 7</h1>
+              <p class="text-secondary mb-3">Drama, komedi | 2022 | 2j 25m</p>
+              <p class="lead mb-4">Kisah menyentuh tentang ikatan kasih sayang seorang ayah dan putrinya di balik jeruji penjara.</p>
+              <a href="detail-film.html" class="btn btn-danger btn-lg fw-semibold me-2">Lihat Detail</a>
+              <a href="film.html" class="btn btn-outline-light btn-lg">Semua Film</a>
+            </div>
+          </div>
+        </div>
       </div>
-      
-      <div class="row row-cols-2 row-cols-md-4 g-3">
+      <div class="carousel-item">
+        <div class="container py-5">
+          <div class="row align-items-center g-4">
+            <div class="col-md-4 col-lg-3 text-center">
+              <img src="img/poster1.jpg" class="img-fluid rounded shadow" style="max-height: 360px; object-fit: cover;" alt="Poster Doctor X: Mafia in White">
+            </div>
+            <div class="col-md-8 col-lg-9">
+              <span class="badge text-bg-danger mb-2">Serial Pilihan</span>
+              <h2 class="display-5 fw-bold mb-2">Doctor X: Mafia in White</h2>
+              <p class="text-secondary mb-3">Drama medis | Serial LayarKu</p>
+              <p class="lead mb-4">Drama rumah sakit tentang dokter bedah yang berhadapan dengan intrik dan kepentingan di dunia medis.</p>
+              <a href="detail-serial.html" class="btn btn-danger btn-lg fw-semibold me-2">Lihat Episode</a>
+              <a href="serial.html" class="btn btn-outline-light btn-lg">Semua Serial</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="carousel-item">
+        <div class="container py-5">
+          <div class="row align-items-center g-4">
+            <div class="col-md-4 col-lg-3 text-center">
+              <img src="img/poster6.jpeg" class="img-fluid rounded shadow" style="max-height: 360px; object-fit: cover;" alt="Poster Agak Laen">
+            </div>
+            <div class="col-md-8 col-lg-9">
+              <span class="badge text-bg-danger mb-2">Populer</span>
+              <h2 class="display-5 fw-bold mb-2">Agak Laen</h2>
+              <p class="text-secondary mb-3">Komedi, horor | 2024 | 1j 59m</p>
+              <p class="lead mb-4">Empat sekawan pengelola rumah hantu pasar malam terjebak dalam situasi tak terduga yang mengundang tawa sekaligus tegang.</p>
+              <a href="film.html" class="btn btn-danger btn-lg fw-semibold">Jelajahi Katalog</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#heroBanner" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Sebelumnya</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#heroBanner" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Berikutnya</span>
+    </button>
+  </header>
 
+  <main class="container py-5">
+    <!-- Bagian Film (Lengkap 16 Judul) -->
+    <section class="mb-5">
+      <div class="d-flex justify-content-between align-items-center mb-4">
+        <h2 class="h3 border-start border-danger border-4 ps-3 mb-0">Film</h2>
+        <a href="film.html" class="btn btn-outline-danger btn-sm">Lihat Halaman Film</a>
+      </div>
+      <div class="row row-cols-2 row-cols-md-3 row-cols-lg-4 g-4">
         <div class="col">
           <div class="card h-100 overflow-hidden">
             <a href="detail-film.html" aria-label="Lihat detail Miracle in Cell No. 7">
               <img src="img/poster2.jpeg" class="card-img-top" style="aspect-ratio: 2 / 3; object-fit: cover;" alt="Poster Miracle in Cell No. 7">
             </a>
             <div class="card-body">
-              <h2 class="h6 card-title">Miracle in Cell No. 7</h2>
-              <p class="small text-secondary mb-2">Drama, komedi | 2022 | 2j 25m</p>
-              
+              <h3 class="h6 card-title">Miracle in Cell No. 7</h3>
+              <p class="small text-secondary mb-0">Drama, komedi | 2022 | 2j 25m</p>
             </div>
           </div>
         </div>
-        <div class="col"><div class="card h-100 overflow-hidden">
-          <img src="img/poster3.jpeg" class="card-img-top" style="aspect-ratio: 2 / 3; object-fit: cover;" alt="Poster Laskar Pelangi">
-          <div class="card-body">
-            <h2 class="h6 card-title">Laskar Pelangi</h2>
-            <p class="small text-secondary mb-0">Drama, keluarga | 2008 | 2j 04m</p>
+        <div class="col">
+          <div class="card h-100 overflow-hidden">
+            <img src="img/poster3.jpeg" class="card-img-top" style="aspect-ratio: 2 / 3; object-fit: cover;" alt="Poster Laskar Pelangi">
+            <div class="card-body">
+              <h3 class="h6 card-title">Laskar Pelangi</h3>
+              <p class="small text-secondary mb-0">Drama, keluarga | 2008 | 2j 04m</p>
+            </div>
           </div>
         </div>
-      </div>
         <div class="col">
           <div class="card h-100 overflow-hidden">
             <img src="img/poster4.jpeg" class="card-img-top" style="aspect-ratio: 2 / 3; object-fit: cover;" alt="Poster Avengers: Endgame">
             <div class="card-body">
-              <h2 class="h6 card-title">Avengers: Endgame</h2>
+              <h3 class="h6 card-title">Avengers: Endgame</h3>
               <p class="small text-secondary mb-0">Aksi, petualangan, fiksi ilmiah | 2019 | 3j 01m</p>
             </div>
           </div>
@@ -117,7 +139,8 @@
         <div class="col">
           <div class="card h-100 overflow-hidden">
             <img src="img/poster5.jpeg" class="card-img-top" style="aspect-ratio: 2 / 3; object-fit: cover;" alt="Poster Keluarga Cemara">
-            <div class="card-body"><h2 class="h6 card-title">Keluarga Cemara</h2>
+            <div class="card-body">
+              <h3 class="h6 card-title">Keluarga Cemara</h3>
               <p class="small text-secondary mb-0">Drama, keluarga | 2019 | 1j 50m</p>
             </div>
           </div>
@@ -126,7 +149,7 @@
           <div class="card h-100 overflow-hidden">
             <img src="img/poster6.jpeg" class="card-img-top" style="aspect-ratio: 2 / 3; object-fit: cover;" alt="Poster Agak Laen">
             <div class="card-body">
-              <h2 class="h6 card-title">Agak Laen</h2>
+              <h3 class="h6 card-title">Agak Laen</h3>
               <p class="small text-secondary mb-0">Komedi, horor | 2024 | 1j 59m</p>
             </div>
           </div>
@@ -135,7 +158,7 @@
           <div class="card h-100 overflow-hidden">
             <img src="img/poster7.jpeg" class="card-img-top" style="aspect-ratio: 2 / 3; object-fit: cover;" alt="Poster Back to the Future">
             <div class="card-body">
-              <h2 class="h6 card-title">Back to the Future</h2>
+              <h3 class="h6 card-title">Back to the Future</h3>
               <p class="small text-secondary mb-0">Fiksi ilmiah, petualangan, komedi | 1985 | 1j 56m</p>
             </div>
           </div>
@@ -143,12 +166,17 @@
         <div class="col">
           <div class="card h-100 overflow-hidden">
             <img src="img/poster8.jpeg" class="card-img-top" style="aspect-ratio: 2 / 3; object-fit: cover;" alt="Poster Wicker">
-            <div class="card-body"><h2 class="h6 card-title">Wicker</h2><p class="small text-secondary mb-0">Drama, fantasi | Durasi belum diumumkan</p></div></div></div>
+            <div class="card-body">
+              <h3 class="h6 card-title">Wicker</h3>
+              <p class="small text-secondary mb-0">Drama, fantasi | Durasi belum diumumkan</p>
+            </div>
+          </div>
+        </div>
         <div class="col">
           <div class="card h-100 overflow-hidden">
             <img src="img/poster9.jpeg" class="card-img-top" style="aspect-ratio: 2 / 3; object-fit: cover;" alt="Poster Street Fighter">
             <div class="card-body">
-              <h2 class="h6 card-title">Street Fighter</h2>
+              <h3 class="h6 card-title">Street Fighter</h3>
               <p class="small text-secondary mb-0">Aksi, seni bela diri | Durasi belum diumumkan</p>
             </div>
           </div>
@@ -157,7 +185,7 @@
           <div class="card h-100 overflow-hidden">
             <img src="img/poster10.jpeg" class="card-img-top" style="aspect-ratio: 2 / 3; object-fit: cover;" alt="Poster Wildwood">
             <div class="card-body">
-              <h2 class="h6 card-title">Wildwood</h2>
+              <h3 class="h6 card-title">Wildwood</h3>
               <p class="small text-secondary mb-0">Animasi, fantasi, petualangan | Durasi belum diumumkan</p>
             </div>
           </div>
@@ -166,7 +194,7 @@
           <div class="card h-100 overflow-hidden">
             <img src="img/poster11.jpeg" class="card-img-top" style="aspect-ratio: 2 / 3; object-fit: cover;" alt="Poster Clayface">
             <div class="card-body">
-              <h2 class="h6 card-title">Clayface</h2>
+              <h3 class="h6 card-title">Clayface</h3>
               <p class="small text-secondary mb-0">Horor, superhero | Durasi belum diumumkan</p>
             </div>
           </div>
@@ -175,27 +203,66 @@
           <div class="card h-100 overflow-hidden">
             <img src="img/poster14.jpeg" class="card-img-top" style="aspect-ratio: 2 / 3; object-fit: cover;" alt="Poster Harbin">
             <div class="card-body">
-              <h2 class="h6 card-title">Harbin</h2>
+              <h3 class="h6 card-title">Harbin</h3>
               <p class="small text-secondary mb-0">Sejarah, aksi, thriller | 2024 | 1j 54m</p>
             </div>
           </div>
         </div>
         <div class="col">
           <div class="card h-100 overflow-hidden">
-            <img src="img/poster15.jpeg" class="card-img-top" style="aspect-ratio: 2 / 3; object-fit: cover;" alt="Poster NID"><div class="card-body"><h2 class="h6 card-title">NID</h2><p class="small text-secondary mb-0">Thriller, kriminal | Durasi belum diumumkan</p></div></div></div>
-
-        <div class="col"><div class="card h-100 overflow-hidden"><img src="img/poster16.jpeg" class="card-img-top" style="aspect-ratio: 2 / 3; object-fit: cover;" alt="Poster Heart of the Beast"><div class="card-body"><h2 class="h6 card-title">Heart of the Beast</h2><p class="small text-secondary mb-0">Petualangan, thriller | Durasi belum diumumkan</p></div></div></div>
+            <img src="img/poster15.jpeg" class="card-img-top" style="aspect-ratio: 2 / 3; object-fit: cover;" alt="Poster NID">
+            <div class="card-body">
+              <h3 class="h6 card-title">NID</h3>
+              <p class="small text-secondary mb-0">Thriller, kriminal | Durasi belum diumumkan</p>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card h-100 overflow-hidden">
+            <img src="img/poster16.jpeg" class="card-img-top" style="aspect-ratio: 2 / 3; object-fit: cover;" alt="Poster Heart of the Beast">
+            <div class="card-body">
+              <h3 class="h6 card-title">Heart of the Beast</h3>
+              <p class="small text-secondary mb-0">Petualangan, thriller | Durasi belum diumumkan</p>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card h-100 overflow-hidden">
+            <img src="img/poster22.jpg" class="card-img-top" style="aspect-ratio: 2 / 3; object-fit: cover;" alt="Poster Pengabdi Setan">
+            <div class="card-body">
+              <h3 class="h6 card-title">Pengabdi Setan</h3>
+              <p class="small text-secondary mb-0">Horor | 2017 | 1j 47m</p>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card h-100 overflow-hidden">
+            <img src="img/poster23.jpeg" class="card-img-top" style="aspect-ratio: 2 / 3; object-fit: cover;" alt="Poster Parasite">
+            <div class="card-body">
+              <h3 class="h6 card-title">Parasite</h3>
+              <p class="small text-secondary mb-0">Drama, thriller, komedi gelap | 2019 | 2j 12m</p>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card h-100 overflow-hidden">
+            <img src="img/poster24.jpeg" class="card-img-top" style="aspect-ratio: 2 / 3; object-fit: cover;" alt="Poster Spirited Away">
+            <div class="card-body">
+              <h3 class="h6 card-title">Spirited Away</h3>
+              <p class="small text-secondary mb-0">Animasi, fantasi, petualangan | 2001 | 2j 05m</p>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
 
-    <section class="mb-5">
-
-      
-      <div class="d-flex justify-content-between align-items-center mb-3">
-        <h2 class="h3 border-start border-danger border-4 ps-3 mb-0">Serial Pilihan</h2>
-        <a href="serial.html" class="btn btn-sm btn-outline-danger">Semua serial</a>
+    <!-- Bagian Serial (Lengkap 12 Judul) -->
+    <section>
+      <div class="d-flex justify-content-between align-items-center mb-4">
+        <h2 class="h3 border-start border-danger border-4 ps-3 mb-0">Serial</h2>
+        <a href="serial.html" class="btn btn-outline-danger btn-sm">Lihat Halaman Serial</a>
       </div>
-      <div class="row row-cols-2 row-cols-md-4 g-3">
+      <div class="row row-cols-2 row-cols-md-3 row-cols-lg-4 g-4">
         <div class="col">
           <div class="card h-100 overflow-hidden">
             <a href="detail-serial.html" aria-label="Lihat episode Doctor X: Mafia in White">
@@ -203,8 +270,7 @@
             </a>
             <div class="card-body">
               <h3 class="h6 card-title">Doctor X: Mafia in White</h3>
-              <p class="small text-secondary mb-2">Drama medis | Serial | Durasi episode bervariasi</p>
-              
+              <p class="small text-secondary mb-0">Drama medis | Episode dan durasi belum diumumkan</p>
             </div>
           </div>
         </div>
@@ -222,17 +288,92 @@
             <img src="img/poster12.jpeg" class="card-img-top" style="aspect-ratio: 2 / 3; object-fit: cover;" alt="Poster 100 Days of Deception">
             <div class="card-body">
               <h3 class="h6 card-title">100 Days of Deception</h3>
-              <p class="small text-secondary mb-0">Drama, romansa | Jumlah episode belum diumumkan</p>
+              <p class="small text-secondary mb-0">Drama, romansa | Episode dan durasi belum diumumkan</p>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card h-100 overflow-hidden">
+            <img src="img/poster17.jpg" class="card-img-top" style="aspect-ratio: 2 / 3; object-fit: cover;" alt="Poster Stranger Things">
+            <div class="card-body">
+              <h3 class="h6 card-title">Stranger Things</h3>
+              <p class="small text-secondary mb-0">Drama, misteri, fiksi ilmiah | Episode dan durasi akan dilengkapi</p>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card h-100 overflow-hidden">
+            <img src="img/poster18.jpeg" class="card-img-top" style="aspect-ratio: 2 / 3; object-fit: cover;" alt="Poster Wednesday">
+            <div class="card-body">
+              <h3 class="h6 card-title">Wednesday</h3>
+              <p class="small text-secondary mb-0">Komedi, misteri, fantasi | Episode dan durasi akan dilengkapi</p>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card h-100 overflow-hidden">
+            <img src="img/poster19.jpeg" class="card-img-top" style="aspect-ratio: 2 / 3; object-fit: cover;" alt="Poster Squid Game">
+            <div class="card-body">
+              <h3 class="h6 card-title">Squid Game</h3>
+              <p class="small text-secondary mb-0">Drama, thriller, survival | Episode dan durasi akan dilengkapi</p>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card h-100 overflow-hidden">
+            <img src="img/poster20.jpeg" class="card-img-top" style="aspect-ratio: 2 / 3; object-fit: cover;" alt="Poster The Last of Us">
+            <div class="card-body">
+              <h3 class="h6 card-title">The Last of Us</h3>
+              <p class="small text-secondary mb-0">Drama, petualangan, fiksi ilmiah | Episode dan durasi akan dilengkapi</p>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card h-100 overflow-hidden">
+            <img src="img/poster21.jpg" class="card-img-top" style="aspect-ratio: 2 / 3; object-fit: cover;" alt="Poster Gadis Kretek">
+            <div class="card-body">
+              <h3 class="h6 card-title">Gadis Kretek</h3>
+              <p class="small text-secondary mb-0">Drama, romansa, sejarah | 5 episode</p>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card h-100 overflow-hidden">
+            <img src="img/poster25.jpeg" class="card-img-top" style="aspect-ratio: 2 / 3; object-fit: cover;" alt="Poster Crash Landing on You">
+            <div class="card-body">
+              <h3 class="h6 card-title">Crash Landing on You</h3>
+              <p class="small text-secondary mb-0">Drama, romansa, komedi | 2019 | 16 episode</p>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card h-100 overflow-hidden">
+            <img src="img/poster26.webp" class="card-img-top" style="aspect-ratio: 2 / 3; object-fit: cover;" alt="Poster Breaking Bad">
+            <div class="card-body">
+              <h3 class="h6 card-title">Breaking Bad</h3>
+              <p class="small text-secondary mb-0">Drama, kriminal, thriller | 2008-2013 | 62 episode</p>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card h-100 overflow-hidden">
+            <img src="img/poster27.webp" class="card-img-top" style="aspect-ratio: 2 / 3; object-fit: cover;" alt="Poster Money Heist">
+            <div class="card-body">
+              <h3 class="h6 card-title">Money Heist</h3>
+              <p class="small text-secondary mb-0">Aksi, thriller, kriminal | 2017-2021 | 41 episode</p>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card h-100 overflow-hidden">
+            <img src="img/poster28.jpeg" class="card-img-top" style="aspect-ratio: 2 / 3; object-fit: cover;" alt="Poster Game of Thrones">
+            <div class="card-body">
+              <h3 class="h6 card-title">Game of Thrones</h3>
+              <p class="small text-secondary mb-0">Fantasi, drama, aksi | 2011-2019 | 73 episode</p>
             </div>
           </div>
         </div>
       </div>
-    </section>
-
-    <section class="p-5 rounded-3 bg-danger-subtle bg-gradient text-center">
-      <h2>Pendaftaran Pelanggan Baru</h2>
-      
-      <a class="btn btn-danger" href="kontak.html">Daftar sekarang</a>
     </section>
   </main>
 
