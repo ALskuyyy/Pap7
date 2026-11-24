@@ -18,6 +18,19 @@
     .overlay-bawah {
       background: linear-gradient(to top, rgba(0, 0, 0, 0.9), transparent);
     }
+    .overlay-atas,
+    .overlay-bawah {
+      transition: opacity 0.35s ease, visibility 0.35s ease;
+    }
+    .player-idle .overlay-atas,
+    .player-idle .overlay-bawah {
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+    }
+    .player-idle {
+      cursor: none;
+    }
     .slider-volume {
       width: 80px;
     }
@@ -25,7 +38,7 @@
 </head>
 <body class="bg-black text-white">
 
-  <div class="position-relative min-vh-100 d-flex align-items-center justify-content-center bg-black">
+  <div id="wadahPemutar" class="position-relative min-vh-100 d-flex align-items-center justify-content-center bg-black">
 
     <!-- Bagian Atas: Tombol Kembali dan Judul Serial + Episode -->
     <div class="overlay-atas position-fixed top-0 start-0 end-0 z-3 p-3 d-flex justify-content-between align-items-center">
@@ -146,6 +159,7 @@
     integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
     crossorigin="anonymous"></script>
   <script>
+    const wadahPemutar = document.getElementById('wadahPemutar');
     const video = document.getElementById('videoSerial');
     const tombolPlay = document.getElementById('tombolPlay');
     const ikonPlay = document.getElementById('ikonPlay');
@@ -162,6 +176,34 @@
     const labelKualitas = document.getElementById('labelKualitas');
     const tombolLayarPenuh = document.getElementById('tombolLayarPenuh');
     const ikonLayarPenuh = document.getElementById('ikonLayarPenuh');
+
+    // Sembunyikan kontrol saat pengguna diam, tampilkan lagi saat di-hover / digerakkan
+    let timerDiam;
+    function tampilkanKontrol() {
+      wadahPemutar.classList.remove('player-idle');
+      clearTimeout(timerDiam);
+      timerDiam = setTimeout(() => {
+        const adaDropdownTerbuka = document.querySelector('.dropdown-menu.show');
+        if (!adaDropdownTerbuka) {
+          wadahPemutar.classList.add('player-idle');
+        }
+      }, 2500);
+    }
+
+    ['mousemove', 'mouseenter', 'pointermove', 'touchstart', 'keydown'].forEach(eventName => {
+      wadahPemutar.addEventListener(eventName, tampilkanKontrol, { passive: true });
+    });
+
+    wadahPemutar.addEventListener('mouseleave', () => {
+      clearTimeout(timerDiam);
+      const adaDropdownTerbuka = document.querySelector('.dropdown-menu.show');
+      if (!adaDropdownTerbuka) {
+        wadahPemutar.classList.add('player-idle');
+      }
+    });
+
+    document.addEventListener('hidden.bs.dropdown', tampilkanKontrol);
+    tampilkanKontrol();
 
     // Mengubah detik menjadi format MM:SS
     function formatMenitDetik(detik) {
