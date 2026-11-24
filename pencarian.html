@@ -37,10 +37,10 @@
   <main class="container py-4">
     <h1 class="h3 border-start border-danger border-4 ps-3 mb-3">Cari Film</h1>
     <p class="text-secondary mb-4">Cari berdasarkan judul, genre, atau tahun rilis.</p>
-    <form id="searchForm" class="row g-2 mb-4" role="search">
+    <form action="pencarian.html" method="get" id="searchForm" class="row g-2 mb-4" role="search">
       <div class="col-sm">
         <label for="filmKeyword" class="visually-hidden">Kata kunci film</label>
-        <input id="filmKeyword" class="form-control" type="search"
+        <input id="filmKeyword" class="form-control" type="search" name="q"
           placeholder="Contoh: komedi, Miracle, 2024" autocomplete="off">
       </div>
       <div class="col-sm-auto">
@@ -78,10 +78,10 @@
       { title: "Parasite", poster: "poster23.jpeg", details: "Drama, thriller, komedi gelap | 2019 | 2j 12m" },
       { title: "Spirited Away", poster: "poster24.jpeg", details: "Animasi, fantasi, petualangan | 2001 | 2j 05m" }
     ];
-    const searchForm = document.getElementById("searchForm");
     const keywordInput = document.getElementById("filmKeyword");
     const resultsContainer = document.getElementById("searchResults");
     const status = document.getElementById("searchStatus");
+    keywordInput.value = new URLSearchParams(window.location.search).get("q") || "";
 
     function renderResults() {
       const query = keywordInput.value.trim().toLowerCase();
@@ -132,10 +132,6 @@
       }
     }
 
-    searchForm.addEventListener("submit", (event) => {
-      event.preventDefault();
-      renderResults();
-    });
     keywordInput.addEventListener("input", renderResults);
     renderResults();
   </script>
