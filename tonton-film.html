@@ -1,0 +1,362 @@
+<!doctype html>
+<html lang="id" data-bs-theme="dark">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Menonton: Miracle in Cell No. 7 - LayarKu</title>
+  <link
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+    rel="stylesheet"
+    integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
+    crossorigin="anonymous">
+  <link rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <style>
+    body {
+      background-color: #000;
+      color: #fff;
+      overflow-x: hidden;
+    }
+    .netflix-stage {
+      position: relative;
+      min-height: 100vh;
+      background: #000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .netflix-video {
+      width: 100%;
+      max-height: 100vh;
+      object-fit: contain;
+      background: #000;
+    }
+    .netflix-overlay-top,
+    .netflix-overlay-bottom {
+      position: fixed;
+      left: 0;
+      right: 0;
+      z-index: 20;
+      transition: opacity 0.25s ease;
+      pointer-events: none;
+    }
+    .netflix-overlay-top {
+      top: 0;
+      background: linear-gradient(180deg, rgba(0, 0, 0, 0.85) 0%, rgba(0, 0, 0, 0) 100%);
+      padding: 1.25rem 1.5rem;
+    }
+    .netflix-overlay-bottom {
+      bottom: 0;
+      background: linear-gradient(0deg, rgba(0, 0, 0, 0.92) 0%, rgba(0, 0, 0, 0.55) 65%, rgba(0, 0, 0, 0) 100%);
+      padding: 1.5rem 1.5rem 1.25rem;
+    }
+    .netflix-overlay-top *,
+    .netflix-overlay-bottom * {
+      pointer-events: auto;
+    }
+    .player-hidden .netflix-overlay-top,
+    .player-hidden .netflix-overlay-bottom {
+      opacity: 0;
+      pointer-events: none;
+    }
+    .progress-bar-nf {
+      height: 5px;
+      cursor: pointer;
+      accent-color: #dc3545;
+      width: 100%;
+    }
+    .progress-bar-nf:hover {
+      height: 7px;
+    }
+    .btn-nf {
+      background: transparent;
+      border: none;
+      color: #fff;
+      padding: 0.35rem 0.5rem;
+      font-size: 1.35rem;
+      line-height: 1;
+      transition: transform 0.15s ease, color 0.15s ease;
+    }
+    .btn-nf:hover {
+      color: #dc3545;
+      transform: scale(1.08);
+    }
+    .subtitle-banner {
+      position: fixed;
+      bottom: 5.5rem;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 15;
+      background: rgba(0, 0, 0, 0.78);
+      color: #fff;
+      padding: 0.35rem 0.9rem;
+      border-radius: 0.25rem;
+      font-size: 1rem;
+      text-align: center;
+      max-width: 85%;
+      display: none;
+    }
+    .dummy-badge {
+      font-size: 0.72rem;
+      letter-spacing: 0.04em;
+    }
+  </style>
+</head>
+<body id="playerRoot">
+  <div class="netflix-stage" id="videoStage">
+    <!-- Overlay Atas -->
+    <div class="netflix-overlay-top d-flex justify-content-between align-items-center">
+      <div class="d-flex align-items-center gap-3">
+        <a href="detail-film.html" class="btn btn-outline-light btn-sm fw-semibold">
+          <i class="bi bi-arrow-left me-1"></i>Kembali ke Detail
+        </a>
+        <div>
+          <div class="d-flex align-items-center gap-2">
+            <span class="fw-bold">Miracle in Cell No. 7</span>
+          </div>
+          <small class="text-secondary d-none d-sm-inline">2022 &bull; Drama, Komedi &bull; 13+</small>
+        </div>
+      </div>
+      <span class="text-danger fw-bold fs-5 d-none d-md-inline">LayarKu</span>
+    </div>
+
+    <!-- Pemutar Video Utama -->
+    <video
+      id="mainVideo"
+      class="netflix-video"
+      poster="img/poster2.jpeg"
+      preload="metadata"
+      playsinline>
+      <source src="video/trailer-miracle.mp4" type="video/mp4">
+      Browser Anda tidak mendukung pemutar video HTML5.
+    </video>
+
+    <!-- Teks Subtitle -->
+    <div id="subtitleBox" class="subtitle-banner">
+      [Subtitle Aktif — Pemutaran LayarKu]
+    </div>
+
+    <!-- Overlay Kontrol Bawah Ala Netflix -->
+    <div class="netflix-overlay-bottom">
+      <div class="d-flex align-items-center gap-2 mb-2">
+        <input type="range" id="seekBar" class="progress-bar-nf" min="0" max="100" value="0" step="0.1" aria-label="Posisi video">
+      </div>
+
+      <div class="d-flex flex-wrap justify-content-between align-items-center gap-2">
+        <!-- Kontrol Kiri -->
+        <div class="d-flex align-items-center gap-2">
+          <button type="button" class="btn-nf" id="btnPlayPause" aria-label="Putar atau jeda">
+            <i class="bi bi-play-fill" id="iconPlayPause"></i>
+          </button>
+          <button type="button" class="btn-nf" id="btnRewind" title="Mundur 10 detik" aria-label="Mundur 10 detik">
+            <i class="bi bi-arrow-counterclockwise"></i>
+          </button>
+          <button type="button" class="btn-nf" id="btnForward" title="Maju 10 detik" aria-label="Maju 10 detik">
+            <i class="bi bi-arrow-clockwise"></i>
+          </button>
+
+          <div class="d-flex align-items-center gap-1 ms-1">
+            <button type="button" class="btn-nf" id="btnMute" aria-label="Bisukan atau aktifkan suara">
+              <i class="bi bi-volume-up-fill" id="iconVolume"></i>
+            </button>
+            <input type="range" id="volumeBar" min="0" max="1" step="0.05" value="1" style="width: 75px; accent-color: #dc3545;" aria-label="Volume">
+          </div>
+
+          <small class="text-light ms-2" id="timeDisplay">00:00 / 00:00</small>
+        </div>
+
+        <!-- Kontrol Kanan -->
+        <div class="d-flex align-items-center gap-2">
+          <div class="dropdown">
+            <button class="btn btn-dark btn-sm border-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+              <i class="bi bi-badge-cc me-1"></i><span id="labelSub">ID</span>
+            </button>
+            <ul class="dropdown-menu dropdown-menu-dark dropdown-menu-end">
+              <li><button class="dropdown-item sub-option" data-sub="ID" type="button">Indonesia</button></li>
+              <li><button class="dropdown-item sub-option" data-sub="EN" type="button">English</button></li>
+              <li><button class="dropdown-item sub-option" data-sub="OFF" type="button">Nonaktif</button></li>
+            </ul>
+          </div>
+
+          <div class="dropdown">
+            <button class="btn btn-dark btn-sm border-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+              <i class="bi bi-gear me-1"></i><span id="labelQual">1080p</span>
+            </button>
+            <ul class="dropdown-menu dropdown-menu-dark dropdown-menu-end">
+              <li><button class="dropdown-item qual-option" data-qual="1080p" type="button">1080p Full HD</button></li>
+              <li><button class="dropdown-item qual-option" data-qual="720p" type="button">720p HD</button></li>
+              <li><button class="dropdown-item qual-option" data-qual="480p" type="button">480p SD</button></li>
+            </ul>
+          </div>
+
+          <button type="button" class="btn-nf" id="btnFullscreen" title="Layar penuh" aria-label="Layar penuh">
+            <i class="bi bi-arrows-fullscreen" id="iconFullscreen"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script
+    src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+    crossorigin="anonymous"></script>
+  <script>
+    const video = document.getElementById('mainVideo');
+    const stage = document.getElementById('videoStage');
+    const btnPlayPause = document.getElementById('btnPlayPause');
+    const iconPlayPause = document.getElementById('iconPlayPause');
+    const btnRewind = document.getElementById('btnRewind');
+    const btnForward = document.getElementById('btnForward');
+    const btnMute = document.getElementById('btnMute');
+    const iconVolume = document.getElementById('iconVolume');
+    const volumeBar = document.getElementById('volumeBar');
+    const seekBar = document.getElementById('seekBar');
+    const timeDisplay = document.getElementById('timeDisplay');
+    const btnFullscreen = document.getElementById('btnFullscreen');
+    const iconFullscreen = document.getElementById('iconFullscreen');
+    const subtitleBox = document.getElementById('subtitleBox');
+    const labelSub = document.getElementById('labelSub');
+    const labelQual = document.getElementById('labelQual');
+
+    let hideTimer;
+    let activeSub = 'ID';
+
+    function formatTime(sec) {
+      if (!Number.isFinite(sec) || sec < 0) return '00:00';
+      const m = Math.floor(sec / 60);
+      const s = Math.floor(sec % 60);
+      return String(m).padStart(2, '0') + ':' + String(s).padStart(2, '0');
+    }
+
+    function updatePlayIcon() {
+      if (video.paused) {
+        iconPlayPause.className = 'bi bi-play-fill';
+        subtitleBox.style.display = 'none';
+      } else {
+        iconPlayPause.className = 'bi bi-pause-fill';
+        if (activeSub !== 'OFF') {
+          subtitleBox.textContent = activeSub === 'EN'
+            ? '[Subtitle: Miracle in Cell No. 7 - LayarKu]'
+            : '[Subtitle Aktif — Pemutaran LayarKu]';
+          subtitleBox.style.display = 'block';
+        }
+      }
+    }
+
+    function updateVolumeIcon() {
+      if (video.muted || video.volume === 0) {
+        iconVolume.className = 'bi bi-volume-mute-fill';
+      } else if (video.volume < 0.5) {
+        iconVolume.className = 'bi bi-volume-down-fill';
+      } else {
+        iconVolume.className = 'bi bi-volume-up-fill';
+      }
+    }
+
+    function wakeControls() {
+      stage.classList.remove('player-hidden');
+      clearTimeout(hideTimer);
+      if (!video.paused) {
+        hideTimer = setTimeout(() => stage.classList.add('player-hidden'), 2800);
+      }
+    }
+
+    btnPlayPause.addEventListener('click', () => {
+      if (video.paused) {
+        video.play().catch(() => {});
+      } else {
+        video.pause();
+      }
+    });
+
+    video.addEventListener('click', () => {
+      if (video.paused) {
+        video.play().catch(() => {});
+      } else {
+        video.pause();
+      }
+    });
+
+    video.addEventListener('play', () => { updatePlayIcon(); wakeControls(); });
+    video.addEventListener('pause', () => { updatePlayIcon(); stage.classList.remove('player-hidden'); clearTimeout(hideTimer); });
+
+    btnRewind.addEventListener('click', () => {
+      video.currentTime = Math.max(0, video.currentTime - 10);
+    });
+
+    btnForward.addEventListener('click', () => {
+      if (Number.isFinite(video.duration)) {
+        video.currentTime = Math.min(video.duration, video.currentTime + 10);
+      }
+    });
+
+    btnMute.addEventListener('click', () => {
+      video.muted = !video.muted;
+      volumeBar.value = video.muted ? 0 : video.volume;
+      updateVolumeIcon();
+    });
+
+    volumeBar.addEventListener('input', () => {
+      video.volume = parseFloat(volumeBar.value);
+      video.muted = video.volume === 0;
+      updateVolumeIcon();
+    });
+
+    video.addEventListener('loadedmetadata', () => {
+      timeDisplay.textContent = '00:00 / ' + formatTime(video.duration);
+    });
+
+    video.addEventListener('timeupdate', () => {
+      if (Number.isFinite(video.duration) && video.duration > 0) {
+        seekBar.value = (video.currentTime / video.duration) * 100;
+        timeDisplay.textContent = formatTime(video.currentTime) + ' / ' + formatTime(video.duration);
+      }
+    });
+
+    seekBar.addEventListener('input', () => {
+      if (Number.isFinite(video.duration) && video.duration > 0) {
+        video.currentTime = (parseFloat(seekBar.value) / 100) * video.duration;
+      }
+    });
+
+    document.querySelectorAll('.sub-option').forEach(btn => {
+      btn.addEventListener('click', () => {
+        activeSub = btn.dataset.sub;
+        labelSub.textContent = activeSub;
+        if (activeSub === 'OFF' || video.paused) {
+          subtitleBox.style.display = 'none';
+        } else {
+          subtitleBox.textContent = activeSub === 'EN'
+            ? '[Subtitle: Miracle in Cell No. 7 - LayarKu]'
+            : '[Subtitle Aktif — Pemutaran LayarKu]';
+          subtitleBox.style.display = 'block';
+        }
+      });
+    });
+
+    document.querySelectorAll('.qual-option').forEach(btn => {
+      btn.addEventListener('click', () => {
+        labelQual.textContent = btn.dataset.qual;
+      });
+    });
+
+    btnFullscreen.addEventListener('click', () => {
+      if (!document.fullscreenElement) {
+        stage.requestFullscreen().catch(() => {});
+      } else {
+        document.exitFullscreen().catch(() => {});
+      }
+    });
+
+    document.addEventListener('fullscreenchange', () => {
+      iconFullscreen.className = document.fullscreenElement
+        ? 'bi bi-fullscreen-exit'
+        : 'bi bi-arrows-fullscreen';
+    });
+
+    stage.addEventListener('mousemove', wakeControls);
+    stage.addEventListener('touchstart', wakeControls);
+  </script>
+</body>
+</html>
