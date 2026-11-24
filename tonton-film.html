@@ -12,122 +12,116 @@
   <link rel="stylesheet"
     href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
   <style>
-    .nf-overlay-top {
-      background: linear-gradient(180deg, rgba(0, 0, 0, 0.88) 0%, rgba(0, 0, 0, 0) 100%);
-      transition: opacity 0.25s ease;
+    .overlay-atas {
+      background: linear-gradient(to bottom, rgba(0, 0, 0, 0.85), transparent);
     }
-    .nf-overlay-bottom {
-      background: linear-gradient(0deg, rgba(0, 0, 0, 0.92) 0%, rgba(0, 0, 0, 0.55) 65%, rgba(0, 0, 0, 0) 100%);
-      transition: opacity 0.25s ease;
+    .overlay-bawah {
+      background: linear-gradient(to top, rgba(0, 0, 0, 0.9), transparent);
     }
-    .nf-hidden .nf-overlay-top,
-    .nf-hidden .nf-overlay-bottom {
-      opacity: 0;
-      pointer-events: none;
-    }
-    .nf-icon-btn {
-      font-size: 1.35rem;
-    }
-    .nf-volume {
-      width: 75px;
+    .slider-volume {
+      width: 80px;
     }
   </style>
 </head>
-<body class="bg-black text-white overflow-x-hidden">
-  <div id="videoStage" class="position-relative min-vh-100 bg-black d-flex align-items-center justify-content-center">
-    <!-- Overlay Atas -->
-    <div class="nf-overlay-top position-fixed top-0 start-0 end-0 z-3 p-3 p-md-4 d-flex justify-content-between align-items-center">
+<body class="bg-black text-white">
+
+  <div class="position-relative min-vh-100 d-flex align-items-center justify-content-center bg-black">
+
+    <!-- Bagian Atas: Tombol Kembali dan Judul Film -->
+    <div class="overlay-atas position-fixed top-0 start-0 end-0 z-3 p-3 d-flex justify-content-between align-items-center">
       <div class="d-flex align-items-center gap-3">
-        <a href="detail-film.html" class="btn btn-outline-light btn-sm fw-semibold">
-          <i class="bi bi-arrow-left me-1"></i>Kembali ke Detail
+        <a href="detail-film.html" class="btn btn-outline-light btn-sm">
+          <i class="bi bi-arrow-left me-1"></i>Kembali
         </a>
         <div>
           <div class="fw-bold">Miracle in Cell No. 7</div>
-          <small class="text-secondary d-none d-sm-inline">2022 &bull; Drama, Komedi &bull; 13+</small>
+          <small class="text-secondary">2022 &bull; Drama, Komedi</small>
         </div>
       </div>
       <span class="text-danger fw-bold fs-5 d-none d-md-inline">LayarKu</span>
     </div>
 
-    <!-- Pemutar Video Utama -->
+    <!-- Video Utama -->
     <video
-      id="mainVideo"
-      class="w-100 vh-100 object-fit-contain bg-black"
+      id="videoFilm"
+      class="w-100 vh-100 object-fit-contain"
       poster="img/poster2.jpeg"
       preload="metadata"
       playsinline>
       <source src="video/trailer-miracle.mp4" type="video/mp4">
-      Browser Anda tidak mendukung pemutar video HTML5.
+      Browser Anda tidak mendukung pemutar video.
     </video>
 
-    <!-- Teks Subtitle -->
-    <div id="subtitleBox" class="position-fixed bottom-0 start-50 translate-middle-x mb-5 pb-3 z-2 d-none">
-      <span class="d-inline-block bg-black bg-opacity-75 text-white px-3 py-1 rounded text-center">
-        [Subtitle Aktif — Pemutaran LayarKu]
-      </span>
-    </div>
-
-    <!-- Overlay Kontrol Bawah Ala Netflix -->
-    <div class="nf-overlay-bottom position-fixed bottom-0 start-0 end-0 z-3 px-3 pt-4 pb-3 px-md-4">
+    <!-- Bagian Bawah: Kontrol Pemutar -->
+    <div class="overlay-bawah position-fixed bottom-0 start-0 end-0 z-3 p-3">
+      <!-- Baris Waktu / Seek -->
       <div class="mb-2">
-        <label for="seekBar" class="visually-hidden">Posisi video</label>
-        <input type="range" id="seekBar" class="form-range mb-0" min="0" max="100" value="0" step="0.1">
+        <label for="barWaktu" class="visually-hidden">Geser posisi video</label>
+        <input type="range" id="barWaktu" class="form-range" min="0" max="100" value="0" step="0.1">
       </div>
 
+      <!-- Baris Tombol Kontrol -->
       <div class="d-flex flex-wrap justify-content-between align-items-center gap-2">
-        <!-- Kontrol Kiri -->
+
+        <!-- Kiri: Play/Pause, Mundur/Maju 10 Detik, Volume, Durasi -->
         <div class="d-flex align-items-center gap-2">
-          <button type="button" class="btn btn-link text-white text-decoration-none p-1 nf-icon-btn" id="btnPlayPause" aria-label="Putar atau jeda">
-            <i class="bi bi-play-fill" id="iconPlayPause"></i>
-          </button>
-          <button type="button" class="btn btn-link text-white text-decoration-none p-1 nf-icon-btn" id="btnRewind" title="Mundur 10 detik" aria-label="Mundur 10 detik">
-            <i class="bi bi-arrow-counterclockwise"></i>
-          </button>
-          <button type="button" class="btn btn-link text-white text-decoration-none p-1 nf-icon-btn" id="btnForward" title="Maju 10 detik" aria-label="Maju 10 detik">
-            <i class="bi bi-arrow-clockwise"></i>
+          <button type="button" id="tombolPlay" class="btn btn-danger btn-sm">
+            <i id="ikonPlay" class="bi bi-play-fill"></i>
           </button>
 
-          <div class="d-flex align-items-center gap-1 ms-1">
-            <button type="button" class="btn btn-link text-white text-decoration-none p-1 nf-icon-btn" id="btnMute" aria-label="Bisukan atau aktifkan suara">
-              <i class="bi bi-volume-up-fill" id="iconVolume"></i>
-            </button>
-            <label for="volumeBar" class="visually-hidden">Volume</label>
-            <input type="range" id="volumeBar" class="form-range mb-0 nf-volume" min="0" max="1" step="0.05" value="1">
-          </div>
+          <button type="button" id="tombolMundur" class="btn btn-outline-light btn-sm" title="Mundur 10 detik">
+            <i class="bi bi-arrow-counterclockwise"></i> 10s
+          </button>
 
-          <small class="text-light ms-2" id="timeDisplay">00:00 / 00:00</small>
+          <button type="button" id="tombolMaju" class="btn btn-outline-light btn-sm" title="Maju 10 detik">
+            <i class="bi bi-arrow-clockwise"></i> 10s
+          </button>
+
+          <button type="button" id="tombolSuara" class="btn btn-outline-secondary btn-sm text-white">
+            <i id="ikonSuara" class="bi bi-volume-up-fill"></i>
+          </button>
+
+          <label for="barVolume" class="visually-hidden">Atur volume</label>
+          <input type="range" id="barVolume" class="form-range slider-volume mb-0" min="0" max="1" step="0.05" value="1">
+
+          <small id="teksWaktu" class="text-light ms-2">00:00 / 00:00</small>
         </div>
 
-        <!-- Kontrol Kanan -->
+        <!-- Kanan: Subtitle, Kualitas, Layar Penuh -->
         <div class="d-flex align-items-center gap-2">
+          <!-- Pilihan Subtitle -->
           <div class="dropdown">
-            <button class="btn btn-dark btn-sm border-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-              <i class="bi bi-badge-cc me-1"></i><span id="labelSub">ID</span>
+            <button class="btn btn-dark btn-sm border-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown">
+              <i class="bi bi-badge-cc me-1"></i><span id="labelSubtitle">ID</span>
             </button>
             <ul class="dropdown-menu dropdown-menu-dark dropdown-menu-end">
-              <li><button class="dropdown-item sub-option" data-sub="ID" type="button">Indonesia</button></li>
-              <li><button class="dropdown-item sub-option" data-sub="EN" type="button">English</button></li>
-              <li><button class="dropdown-item sub-option" data-sub="OFF" type="button">Nonaktif</button></li>
+              <li><button class="dropdown-item pilih-subtitle" data-sub="ID" type="button">Indonesia</button></li>
+              <li><button class="dropdown-item pilih-subtitle" data-sub="EN" type="button">English</button></li>
+              <li><button class="dropdown-item pilih-subtitle" data-sub="OFF" type="button">Nonaktif</button></li>
             </ul>
           </div>
 
+          <!-- Pilihan Kualitas -->
           <div class="dropdown">
-            <button class="btn btn-dark btn-sm border-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-              <i class="bi bi-gear me-1"></i><span id="labelQual">1080p</span>
+            <button class="btn btn-dark btn-sm border-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown">
+              <i class="bi bi-gear me-1"></i><span id="labelKualitas">1080p</span>
             </button>
             <ul class="dropdown-menu dropdown-menu-dark dropdown-menu-end">
-              <li><button class="dropdown-item qual-option" data-qual="1080p" type="button">1080p Full HD</button></li>
-              <li><button class="dropdown-item qual-option" data-qual="720p" type="button">720p HD</button></li>
-              <li><button class="dropdown-item qual-option" data-qual="480p" type="button">480p SD</button></li>
+              <li><button class="dropdown-item pilih-kualitas" data-qual="1080p" type="button">1080p Full HD</button></li>
+              <li><button class="dropdown-item pilih-kualitas" data-qual="720p" type="button">720p HD</button></li>
+              <li><button class="dropdown-item pilih-kualitas" data-qual="480p" type="button">480p SD</button></li>
             </ul>
           </div>
 
-          <button type="button" class="btn btn-link text-white text-decoration-none p-1 nf-icon-btn" id="btnFullscreen" title="Layar penuh" aria-label="Layar penuh">
-            <i class="bi bi-arrows-fullscreen" id="iconFullscreen"></i>
+          <!-- Layar Penuh -->
+          <button type="button" id="tombolLayarPenuh" class="btn btn-outline-light btn-sm" title="Layar penuh">
+            <i id="ikonLayarPenuh" class="bi bi-arrows-fullscreen"></i>
           </button>
         </div>
+
       </div>
     </div>
+
   </div>
 
   <script
@@ -135,69 +129,33 @@
     integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
     crossorigin="anonymous"></script>
   <script>
-    const video = document.getElementById('mainVideo');
-    const stage = document.getElementById('videoStage');
-    const btnPlayPause = document.getElementById('btnPlayPause');
-    const iconPlayPause = document.getElementById('iconPlayPause');
-    const btnRewind = document.getElementById('btnRewind');
-    const btnForward = document.getElementById('btnForward');
-    const btnMute = document.getElementById('btnMute');
-    const iconVolume = document.getElementById('iconVolume');
-    const volumeBar = document.getElementById('volumeBar');
-    const seekBar = document.getElementById('seekBar');
-    const timeDisplay = document.getElementById('timeDisplay');
-    const btnFullscreen = document.getElementById('btnFullscreen');
-    const iconFullscreen = document.getElementById('iconFullscreen');
-    const subtitleBox = document.getElementById('subtitleBox');
-    const subtitleText = subtitleBox.firstElementChild;
-    const labelSub = document.getElementById('labelSub');
-    const labelQual = document.getElementById('labelQual');
+    const video = document.getElementById('videoFilm');
+    const tombolPlay = document.getElementById('tombolPlay');
+    const ikonPlay = document.getElementById('ikonPlay');
+    const tombolMundur = document.getElementById('tombolMundur');
+    const tombolMaju = document.getElementById('tombolMaju');
+    const tombolSuara = document.getElementById('tombolSuara');
+    const ikonSuara = document.getElementById('ikonSuara');
+    const barVolume = document.getElementById('barVolume');
+    const barWaktu = document.getElementById('barWaktu');
+    const teksWaktu = document.getElementById('teksWaktu');
+    const labelSubtitle = document.getElementById('labelSubtitle');
+    const labelKualitas = document.getElementById('labelKualitas');
+    const tombolLayarPenuh = document.getElementById('tombolLayarPenuh');
+    const ikonLayarPenuh = document.getElementById('ikonLayarPenuh');
 
-    let hideTimer;
-    let activeSub = 'ID';
-
-    function formatTime(sec) {
-      if (!Number.isFinite(sec) || sec < 0) return '00:00';
-      const m = Math.floor(sec / 60);
-      const s = Math.floor(sec % 60);
-      return String(m).padStart(2, '0') + ':' + String(s).padStart(2, '0');
-    }
-
-    function updateSubtitle() {
-      if (activeSub === 'OFF' || video.paused) {
-        subtitleBox.classList.add('d-none');
-      } else {
-        subtitleText.textContent = activeSub === 'EN'
-          ? '[Subtitle: Miracle in Cell No. 7 - LayarKu]'
-          : '[Subtitle Aktif — Pemutaran LayarKu]';
-        subtitleBox.classList.remove('d-none');
+    // Mengubah detik menjadi format MM:SS
+    function formatMenitDetik(detik) {
+      if (!Number.isFinite(detik) || detik < 0) {
+        return '00:00';
       }
+      const menit = Math.floor(detik / 60);
+      const sisaDetik = Math.floor(detik % 60);
+      return String(menit).padStart(2, '0') + ':' + String(sisaDetik).padStart(2, '0');
     }
 
-    function updatePlayIcon() {
-      iconPlayPause.className = video.paused ? 'bi bi-play-fill' : 'bi bi-pause-fill';
-      updateSubtitle();
-    }
-
-    function updateVolumeIcon() {
-      if (video.muted || video.volume === 0) {
-        iconVolume.className = 'bi bi-volume-mute-fill';
-      } else if (video.volume < 0.5) {
-        iconVolume.className = 'bi bi-volume-down-fill';
-      } else {
-        iconVolume.className = 'bi bi-volume-up-fill';
-      }
-    }
-
-    function wakeControls() {
-      stage.classList.remove('nf-hidden');
-      clearTimeout(hideTimer);
-      if (!video.paused) {
-        hideTimer = setTimeout(() => stage.classList.add('nf-hidden'), 2800);
-      }
-    }
-
-    function togglePlay() {
+    // Putar atau jeda video
+    function putarAtauJeda() {
       if (video.paused) {
         video.play().catch(() => {});
       } else {
@@ -205,89 +163,88 @@
       }
     }
 
-    btnPlayPause.addEventListener('click', togglePlay);
-    video.addEventListener('click', togglePlay);
+    tombolPlay.addEventListener('click', putarAtauJeda);
+    video.addEventListener('click', putarAtauJeda);
 
     video.addEventListener('play', () => {
-      updatePlayIcon();
-      wakeControls();
+      ikonPlay.className = 'bi bi-pause-fill';
     });
 
     video.addEventListener('pause', () => {
-      updatePlayIcon();
-      stage.classList.remove('nf-hidden');
-      clearTimeout(hideTimer);
+      ikonPlay.className = 'bi bi-play-fill';
     });
 
-    btnRewind.addEventListener('click', () => {
+    // Mundur dan maju 10 detik
+    tombolMundur.addEventListener('click', () => {
       video.currentTime = Math.max(0, video.currentTime - 10);
     });
 
-    btnForward.addEventListener('click', () => {
+    tombolMaju.addEventListener('click', () => {
       if (Number.isFinite(video.duration)) {
         video.currentTime = Math.min(video.duration, video.currentTime + 10);
       }
     });
 
-    btnMute.addEventListener('click', () => {
+    // Bisukan / nyalakan suara dan atur volume
+    tombolSuara.addEventListener('click', () => {
       video.muted = !video.muted;
-      volumeBar.value = video.muted ? 0 : video.volume;
-      updateVolumeIcon();
+      barVolume.value = video.muted ? 0 : video.volume;
+      ikonSuara.className = video.muted ? 'bi bi-volume-mute-fill' : 'bi bi-volume-up-fill';
     });
 
-    volumeBar.addEventListener('input', () => {
-      video.volume = parseFloat(volumeBar.value);
+    barVolume.addEventListener('input', () => {
+      video.volume = parseFloat(barVolume.value);
       video.muted = video.volume === 0;
-      updateVolumeIcon();
+      ikonSuara.className = video.muted ? 'bi bi-volume-mute-fill' : 'bi bi-volume-up-fill';
     });
 
+    // Perbarui tampilan durasi dan slider saat video berjalan
     video.addEventListener('loadedmetadata', () => {
-      timeDisplay.textContent = '00:00 / ' + formatTime(video.duration);
+      teksWaktu.textContent = '00:00 / ' + formatMenitDetik(video.duration);
     });
 
     video.addEventListener('timeupdate', () => {
       if (Number.isFinite(video.duration) && video.duration > 0) {
-        seekBar.value = (video.currentTime / video.duration) * 100;
-        timeDisplay.textContent = formatTime(video.currentTime) + ' / ' + formatTime(video.duration);
+        barWaktu.value = (video.currentTime / video.duration) * 100;
+        teksWaktu.textContent = formatMenitDetik(video.currentTime) + ' / ' + formatMenitDetik(video.duration);
       }
     });
 
-    seekBar.addEventListener('input', () => {
+    // Geser posisi video lewat bar waktu
+    barWaktu.addEventListener('input', () => {
       if (Number.isFinite(video.duration) && video.duration > 0) {
-        video.currentTime = (parseFloat(seekBar.value) / 100) * video.duration;
+        video.currentTime = (parseFloat(barWaktu.value) / 100) * video.duration;
       }
     });
 
-    document.querySelectorAll('.sub-option').forEach(btn => {
-      btn.addEventListener('click', () => {
-        activeSub = btn.dataset.sub;
-        labelSub.textContent = activeSub;
-        updateSubtitle();
+    // Ganti label subtitle (tanpa memunculkan teks subtitle di layar)
+    document.querySelectorAll('.pilih-subtitle').forEach(item => {
+      item.addEventListener('click', () => {
+        labelSubtitle.textContent = item.dataset.sub;
       });
     });
 
-    document.querySelectorAll('.qual-option').forEach(btn => {
-      btn.addEventListener('click', () => {
-        labelQual.textContent = btn.dataset.qual;
+    // Ganti label kualitas video
+    document.querySelectorAll('.pilih-kualitas').forEach(item => {
+      item.addEventListener('click', () => {
+        labelKualitas.textContent = item.dataset.qual;
       });
     });
 
-    btnFullscreen.addEventListener('click', () => {
+    // Mode layar penuh
+    tombolLayarPenuh.addEventListener('click', () => {
       if (!document.fullscreenElement) {
-        stage.requestFullscreen().catch(() => {});
+        document.documentElement.requestFullscreen().catch(() => {});
       } else {
         document.exitFullscreen().catch(() => {});
       }
     });
 
     document.addEventListener('fullscreenchange', () => {
-      iconFullscreen.className = document.fullscreenElement
+      ikonLayarPenuh.className = document.fullscreenElement
         ? 'bi bi-fullscreen-exit'
         : 'bi bi-arrows-fullscreen';
     });
-
-    stage.addEventListener('mousemove', wakeControls);
-    stage.addEventListener('touchstart', wakeControls);
   </script>
 </body>
 </html>
