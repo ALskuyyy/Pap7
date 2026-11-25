@@ -40,6 +40,7 @@
   </nav>
 
   <main class="container py-4">
+    <button id="backButton" class="btn btn-outline-light btn-sm mb-3" type="button">Kembali</button>
     <h1 class="h3 border-start border-danger border-4 ps-3 mb-3">Cari Film</h1>
     <p class="text-secondary mb-4">Cari berdasarkan judul, genre, atau tahun rilis.</p>
     <form action="pencarian.html" method="get" id="searchForm" class="row g-2 mb-4" role="search">
@@ -90,6 +91,13 @@
     const keywordInput = document.getElementById("filmKeyword");
     const resultsContainer = document.getElementById("searchResults");
     const status = document.getElementById("searchStatus");
+    document.getElementById("backButton").addEventListener("click", () => {
+      if (window.history.length > 1) {
+        window.history.back();
+      } else {
+        window.location.href = "index.html";
+      }
+    });
     keywordInput.value = new URLSearchParams(window.location.search).get("q") || "";
 
     function renderResults() {
