@@ -65,7 +65,7 @@
     crossorigin="anonymous"></script>
   <script>
     const films = [
-      { title: "Miracle in Cell No. 7", poster: "poster2.jpeg", details: "Drama, komedi | 2022 | 2j 25m", link: { href: "detail-film.html" } },
+      { title: "Miracle in Cell No. 7", poster: "poster2.jpeg", details: "Drama, komedi | 2022 | 2j 25m"},
       { title: "Laskar Pelangi", poster: "poster3.jpeg", details: "Drama, keluarga | 2008 | 2j 04m" },
       { title: "Avengers: Endgame", poster: "poster4.jpeg", details: "Aksi, petualangan, fiksi ilmiah | 2019 | 3j 01m" },
       { title: "Keluarga Cemara", poster: "poster5.jpeg", details: "Drama, keluarga | 2019 | 1j 50m" },
@@ -121,6 +121,11 @@
         poster.style.objectFit = "cover";
         poster.alt = `Poster ${film.title}`;
 
+        const posterLink = document.createElement("a");
+        posterLink.href = "detail-film.html";
+        posterLink.setAttribute("aria-label", `Lihat detail ${film.title}`);
+        posterLink.append(poster);
+
         const cardBody = document.createElement("div");
         cardBody.className = "card-body";
 
@@ -133,7 +138,7 @@
         details.textContent = film.details;
 
         cardBody.append(title, details);
-        card.append(poster, cardBody);
+        card.append(posterLink, cardBody);
         column.append(card);
         resultsContainer.append(column);
       });
